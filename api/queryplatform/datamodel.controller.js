@@ -1,4 +1,5 @@
-const dbConnection = require("../../connectivity/general/connectors/dbConnections/dbGenericConnector")
+//const dbConnection = require("../../connectivity/general/connectors/dbConnections/dbGenericConnector")
+const dbConnection = require("../../connectivity/general/connectors/dbConnections/postgresqlConnect")
 const express = require("express");
 const router = express.Router();
 const fs = require("fs");
@@ -8,6 +9,7 @@ let dbUsed = process.env.rdbms;
 router.get('/datatables', function (req, res) {
 
     let strQuery ='select * from datamodel_datatables'
+    console.log("Query:" + strQuery);
     dbConnection.query(strQuery, function (error, results, fields) {
         if (error) throw error;
         if (results.rows.length > 0)
@@ -26,7 +28,7 @@ router.get('/datatables', function (req, res) {
  */
     router.get('/datatablesbydomain/:datadomainname', function (req, res) {
         const codeVal = req.params.datadomainname;
-        let strQuery ='select * from datamodel_datatables where domain = '+"'"+codeVal+ "'";
+        let strQuery ='select * from datamodel_datatables where datadomain = '+"'"+codeVal+ "'";
         console.log("Query:" + strQuery);
         dbConnection.query(strQuery, function (error, results, fields) {
             if (error) throw error;
