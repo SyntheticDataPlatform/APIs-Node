@@ -3,5 +3,6 @@ const dbConnection = require("../../connectivity/general/connectors/dbConnection
 const queryBuilder = require('../../general/datatier/reusableQueries');
 const express = require("express");
 const router = express.Router();
-const hl7Builder = require("../../builders/industrystds/buildmsgEDI");
+const dataattributesGenerator = require("../../builders/buildDataAttributes");
 const fs = require("fs");
+const buildDataAttributes = require("../../builders/buildDataAttributes");

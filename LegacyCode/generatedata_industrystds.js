@@ -1,5 +1,5 @@
-const dbConnection = require("./connectivity/general/connectors/dbConnections/dbGenericConnector")
-const queryBuilder = require('./general/datatier/reusableQueries');
+const dbConnection = require("../connectivity/general/connectors/dbConnections/dbGenericConnector")
+const queryBuilder = require('../general/datatier/reusableQueries');
 const dotenv = require('dotenv');
 const path = require("path");
 const uuid = require('uuid');
@@ -7,13 +7,13 @@ const crypto = require('crypto');
 const config = process.env
 const express = require("express");
 const router = express.Router();
-const hl7Builder = require("./builders/buildmsgHL7");
-const fhirBuilder = require("./builders/buildmsgFHIR")
+const hl7Builder = require("../builders/industrystds/buildmsgHL7");
+const fhirBuilder = require("../builders/industrystds/buildmsgFHIR")
 const fs = require("fs");
-const dataOutputting = require("./general/platform/dataOutput")
-const { data } = require('./general/functions/general/randomFunctions');
+const dataOutputting = require("../general/platform/dataOutput")
+const { data } = require('../general/functions/general/randomFunctions');
 //Outputs
-const topicOutput = require("./connectivity/general/connectors/kafka-producer");
+const topicOutput = require("../connectivity/general/connectors/kafka-producer");
 const { type } = require("os");
 // Global Variable for usage in platform
 global.__basedir = __dirname;

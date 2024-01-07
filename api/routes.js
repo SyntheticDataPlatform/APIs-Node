@@ -3,18 +3,18 @@ var express = require('express');
 const router = express.Router();
 // Constants
 const apihealthcontroller = require("./apitesting.controller");
-const dataexistingcontroller = require("./querydata/dataexisting.controller");
-const dataegeneratedcontroller = require("./querydata/datagenerated.controller");
-const datamanagementcontroller = require("./upsertdata/datamanagement.controller");
-const datamodelcontroller = require("./querydata/datamodel.controller");
-const dataplatformcontroller = require("./querydata/dataplatform.controller");
+const dataexistingcontroller = require("../LegacyCode/api/querydata/dataexisting.controller");
+const dataegeneratedcontroller = require("../LegacyCode/api/querydata/datagenerated.controller");
+const datamanagementcontroller = require("../LegacyCode/api/upsertdata/datamanagement.controller");
+const datamodelcontroller = require("./queryplatform/datamodel.controller");
+const dataplatformcontroller = require("./queryplatform/dataplatform.controller");
 const datarndmcontroller = require("./randomquerydata/randomdata.controller");
 const generatedatacontroller = require("./datagenerators/dataattributegenerator.controller");
 const generatedatastructurescontroller = require("./datagenerators/datastructure.controller");
 const hl7controller = require("./industrystds/hl7.controller");
-const impldatacontroller = require("./querydata/implementationdata.controller");
-const refdatacontroller = require("./querydata/referencedata.controller");
-const termdatacontroller = require("./querydata/termsdata.controller");
+const impldatacontroller = require("../LegacyCode/api/querydata/implementationdata.controller");
+const refdatacontroller = require("./queryplatform/referencedata.controller");
+const termdatacontroller = require("../LegacyCode/api/querydata/termsdata.controller");
 //const upsertdataexistingcontroller = require("./upsertdata/dataexisting.controller");
 // Defined Specific Routers - Tied to Constants
 router.use('/api/apihealth', apihealthcontroller)

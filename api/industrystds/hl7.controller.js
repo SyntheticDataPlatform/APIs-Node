@@ -3,7 +3,7 @@ const dbConnection = require("../../connectivity/general/connectors/dbConnection
 const queryBuilder = require('../../general/datatier/reusableQueries');
 const express = require("express");
 const router = express.Router();
-const hl7Builder = require("../../builders/buildmsgHL7");
+const hl7Builder = require("../../builders/industrystds/buildmsgHL7");
 const fs = require("fs");
 
 router.get("/generator-hl7", async(req, res) => {

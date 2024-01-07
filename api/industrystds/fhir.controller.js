@@ -3,6 +3,6 @@ const dbConnection = require("../../connectivity/general/connectors/dbConnection
 const queryBuilder = require('../../general/datatier/reusableQueries');
 const express = require("express");
 const router = express.Router();
-const fhirBuilder = require("../../builders/buildmsgFHIR");
+const fhirBuilder = require("../../builders/industrystds/buildmsgFHIR");
 const fs = require("fs");
 
