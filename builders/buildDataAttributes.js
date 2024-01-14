@@ -49,8 +49,8 @@ module.exports = {
         randomizer = function (array) {
             return array[Math.floor(Math.random() * array.length - 0) + 0]
         }
-        sqlQueryLastNames = `select lastname from dataexisting_namelast order by random() limit ${rows};`
-        //console.log(sqlQueryLastNames)
+        sqlQueryLastNames = `select basevalue from datatier where dataattributeid=1 order by random() limit ${rows};`
+        console.log(sqlQueryLastNames)
         // Process Query for Random Last Names
         lastnames = await db.RecordSpecificResponse(sqlQueryLastNames)
         //console.log(lastnames.rows)
