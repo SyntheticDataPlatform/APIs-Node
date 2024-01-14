@@ -8,8 +8,8 @@ let rdbmsType = process.env.rdbms;
 *     Terms Data
 */
 
-router.get('/termscodesethl7v2', function (req, res) {
-    let strQuery = 'select * from terms_codeset_HL7v2';
+router.get('/termscodesets', function (req, res) {
+    let strQuery = 'select * from terms_codeset_industrystd';
     dbConnection.query(strQuery, function (error, results, fields) {
         if (error) throw error;
         if (results.rows.length > 0){

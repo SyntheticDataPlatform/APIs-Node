@@ -1,9 +1,9 @@
 const api = require("./api/routes")
-//const dotenv = require('dotenv');
+const dotenv = require('dotenv');
 const express = require('express')
 const app = express();
 const bodyParser = require('body-parser')
-//dotenv.config({path: `${__dirname}/.env`})
+dotenv.config({path: `${__dirname}/.env`})
 // Global Variable for usage in platform
 //global.__basedir = __dirname;
 
@@ -31,7 +31,7 @@ app.use('/', api);
 const server = app.listen(port, function () {
     console.log("=========================")
     console.log("System Values Set:")
-    console.log("Server running on port [http_port]: " + port)
+    console.log("Server running on port [http_port]: " + process.env.http_port)
     console.log("Data Geenration Quantity [runQuantity]: "+process.env.runQuantity)
     console.log("Auditing Values Set:")
     console.log("Auditing [auditing]: "+process.env.auditing)
@@ -45,7 +45,7 @@ const server = app.listen(port, function () {
     console.log("dbPort: "+process.env.dbPort)
     console.log("dbName: "+process.env.dbName)
     console.log("dbUser: "+process.env.dbUser)
-    console.log("dbPassword: "+process.env.dbPassword)
+    /*console.log("dbPassword: "+dbPassword)*/
     console.log("=========================")
 
 });

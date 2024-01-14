@@ -6,17 +6,17 @@ const crypto = require('crypto');
 const config = process.env
 //dotenv.config({ path: path.resolve(__dirname, './.env') })
 //const db = require("./connectivity/general/connectors/dbConnections/postgresqlConnect")
-const db = require("./connectivity/general/connectors/dbConnections/dbGenericConnector")
-const queryBuilder = require('./general/datatier/reusableQueries');
+const db = require("../connectivity/general/connectors/dbConnections/dbGenericConnector")
+const queryBuilder = require('../general/datatier/reusableQueries');
 const express = require("express");
 const router = express.Router();
-const buildDataAttributes = require("./builders/buildDataAttributes");
-const auditing = require("./general/platform/auditing");
+const buildDataAttributes = require("../builders/buildDataAttributes");
+const auditing = require("../general/platform/auditing");
 const fs = require("fs");
-const dataOutputting = require("./general/platform/dataOutput")
-const { data } = require('./general/functions/general/randomFunctions');
+const dataOutputting = require("../general/platform/dataOutput")
+const { data } = require('../general/functions/general/randomFunctions');
 //Outputs
-const topicOutput = require("./connectivity/general/connectors/kafka-producer");
+const topicOutput = require("../connectivity/general/connectors/kafka-producer");
 // Global Variable for usage in platform
 global.__basedir = __dirname;
 

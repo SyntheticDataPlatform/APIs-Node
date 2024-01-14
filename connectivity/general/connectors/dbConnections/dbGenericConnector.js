@@ -22,16 +22,16 @@ const credentials = {
 };
 
 if (process.env.rdbms =="postgreSQL") {
-    /*let connectionString = process.env.dbURL;
+    let connectionString = process.env.dbURL;
     client = new Client({
         connectionString,
     })
-    */
+
     client = new Client(credentials);
     //client.connect();
     client.connect(function (err) {
         if (err) throw err;
-        console.log("Connected to Postgres DB !");
+        console.log("dbGeneric Connector - Connected to Postgres DB !");
     });
 }
 if (process.env.rdbms =="mySQL")

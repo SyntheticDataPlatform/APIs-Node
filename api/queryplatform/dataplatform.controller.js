@@ -4,39 +4,22 @@ const router = express.Router();
 const fs = require("fs");
 let rdbmsType = process.env.rdbms;
 
-router.get('/appsettingsgeneral', function (req, res) {
-    let strQuery ='select * from platform_appsettings_general'
+router.get('/datageneration', function (req, res) {
+    let strQuery = 'select * from platform_datageneration';
     dbConnection.query(strQuery, function (error, results, fields) {
         if (error) throw error;
-        if (results.rows.length > 0)
-        {
+        if (results.rows.length > 0){
             res.end(JSON.stringify(results.rows));
             res.status(200).send();
         }
-        else
-        {
-            res.status(200).send("No Data Returned from Query: " +strQuery);
-        }
-    });
-});
-router.get('/platformconfigdataattributes', function (req, res) {
-    let strQuery ='select * from platform_config_dataattributes'
-    dbConnection.query(strQuery, function (error, results, fields) {
-        if (error) throw error;
-        if (results.rows.length > 0)
-        {
-            res.end(JSON.stringify(results.rows));
-            res.status(200).send();
-        }
-        else
-        {
-            res.status(200).send("No Data Returned from Query: " +strQuery);
+        else {
+            res.status(500).send("No Data Available: "+strQuery);
         }
     });
 });
 
-router.get('/platformconfigdatastructures', function (req, res) {
-    let strQuery ='select * from platform_config_datastructures'
+router.get('/dataattributes', function (req, res) {
+    let strQuery ='select * from platform_dataattributes'
     dbConnection.query(strQuery, function (error, results, fields) {
         if (error) throw error;
         if (results.rows.length > 0)
@@ -50,25 +33,24 @@ router.get('/platformconfigdatastructures', function (req, res) {
         }
     });
 });
-
-router.get('/platformconfigdatastructuresdtl', function (req, res) {
-    let strQuery ='select * from platform_config_datastructures_dtl'
-    dbConnection.query(strQuery, function (error, results, fields) {
-        if (error) throw error;
-        if (results.rows.length > 0)
-        {
-            res.end(JSON.stringify(results.rows));
-            res.status(200).send();
-        }
-        else
-        {
-            res.status(200).send("No Data Returned from Query: " +strQuery);
-        }
-    });
-});
-
 router.get('/datastructures', function (req, res) {
-    let strQuery ='select * from platform_config_datastructures'
+    let strQuery ='select * from platform_datastructures'
+    dbConnection.query(strQuery, function (error, results, fields) {
+        if (error) throw error;
+        if (results.rows.length > 0)
+        {
+            res.end(JSON.stringify(results.rows));
+            res.status(200).send();
+        }
+        else
+        {
+            res.status(200).send("No Data Returned from Query: " +strQuery);
+        }
+    });
+});
+
+router.get('/datastructuresdtl', function (req, res) {
+    let strQuery ='select * from platform_datastructures_dtl'
     dbConnection.query(strQuery, function (error, results, fields) {
         if (error) throw error;
         if (results.rows.length > 0)
@@ -86,29 +68,9 @@ router.get('/datastructures', function (req, res) {
 /*
   *     Platform Configuration Details by Data Structure
  */
-router.get('/platformconfigdatastructuresdtlbydatastructure/:datastructureid', function (req, res) {
+router.get('/platformdatastructuresdtlbydatastructure/:datastructureid', function (req, res) {
     const codeVal = req.params.datastructureid;
-    let strQuery ='select * from platform_config_datastructures_dtl where platformdatastructuresid = ' + codeVal;
-    dbConnection.query(strQuery, function (error, results, fields) {
-        if (error) throw error;
-        if (results.rows.length > 0)
-        {
-            res.end(JSON.stringify(results.rows));
-            res.status(200).send();
-        }
-        else
-        {
-            res.status(200).send("No Data Returned from Query: " +strQuery);
-        }
-    });
-});
-
-/*
-  *     Platform Configured Data Attributes by Specific Data Attributes
- */
-router.get('/platformconfigdataattributesbydatastructure/:dataattributeid', function (req, res) {
-    const codeVal = req.params.dataattributeid;
-    let strQuery ='select * from platform_config_dataattributes where dataattributeid = '+ codeVal;
+    let strQuery ='select * from platform_datastructures_dtl where platformdatastructuresid = ' + codeVal;
     dbConnection.query(strQuery, function (error, results, fields) {
         if (error) throw error;
         if (results.rows.length > 0)

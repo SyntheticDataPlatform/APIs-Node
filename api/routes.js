@@ -3,33 +3,39 @@ var express = require('express');
 const router = express.Router();
 // Constants
 const apihealthcontroller = require("./apitesting.controller");
-const dataexistingcontroller = require("./querydata/dataexisting.controller");
-const dataegeneratedcontroller = require("./querydata/datagenerated.controller");
-const datamanagementcontroller = require("./upsertdata/datamanagement.controller");
-const datamodelcontroller = require("./querydata/datamodel.controller");
-const dataplatformcontroller = require("./querydata/dataplatform.controller");
+const datamodelcontroller = require("./queryplatform/datamodel.controller");
+const dataplatformcontroller = require("./queryplatform/dataplatform.controller");
 const datarndmcontroller = require("./randomquerydata/randomdata.controller");
 const generatedatacontroller = require("./datagenerators/dataattributegenerator.controller");
 const generatedatastructurescontroller = require("./datagenerators/datastructure.controller");
 const hl7controller = require("./industrystds/hl7.controller");
-const impldatacontroller = require("./querydata/implementationdata.controller");
-const refdatacontroller = require("./querydata/referencedata.controller");
-const termdatacontroller = require("./querydata/termsdata.controller");
+const refdatacontroller = require("./queryplatform/referencedata.controller");
+const termdatacontroller = require("./queryplatform/termsdata.controller");
+const datatiercontroller = require("./queryplatform/datatier.controller");
+//const dataegeneratedcontroller = require("../LegacyCode/api/querydata/datagenerated.controller");
+//const datamanagementcontroller = require("../LegacyCode/api/upsertdata/datamanagement.controller");
 //const upsertdataexistingcontroller = require("./upsertdata/dataexisting.controller");
+//const impldatacontroller = require("../LegacyCode/api/querydata/implementationdata.controller");
+
 // Defined Specific Routers - Tied to Constants
+// API Health
 router.use('/api/apihealth', apihealthcontroller)
+
+// Generate Data
 router.use('/api/generatedata/generate', generatedatacontroller)
 router.use('/api/generatedata/generatedatastructures', generatedatastructurescontroller)
+// Industry Stds - HL7
 router.use('/api/industrystds', hl7controller)
-router.use('/api/querydata/dataexisting', dataexistingcontroller)
-router.use('/api/querydata/datagenerated', dataegeneratedcontroller)
-router.use('/api/querydata/datamodel', datamodelcontroller)
-router.use('/api/querydata/dataplatform', dataplatformcontroller)
-router.use('/api/querydata/implementationdata', impldatacontroller)
-router.use('/api/querydata/referencedata', refdatacontroller)
-router.use('/api/querydata/randomized', datarndmcontroller)
-router.use('/api/querydata/terminologydata', termdatacontroller)
+// Query Platform
+router.use('/api/queryplatform/datamodel', datamodelcontroller)
+router.use('/api/queryplatform/dataplatform', dataplatformcontroller)
+router.use('/api/queryplatform/referencedata', refdatacontroller)
+router.use('/api/queryplatform/terminologydata', termdatacontroller)
+router.use('/api/queryplatform/datatier', datatiercontroller)
+//router.use('/api/queryplatform/randomized', datarndmcontroller)
+//router.use('/api/queryplatform/dataexisting', dataexistingcontroller)
+//router.use('/api/queryplatform/datagenerated', dataegeneratedcontroller)
 //router.use('/api/upsertdata/dataexistting', upsertdataexistingcontroller)
-router.use('/api/upsertdata/datamanagement', datamanagementcontroller)
-
+//router.use('/api/upsertdata/datamanagement', datamanagementcontroller)
+//router.use('/api/queryplatform/implementationdata', impldatacontroller)
 module.exports = router;
